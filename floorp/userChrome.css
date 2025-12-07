@@ -33,12 +33,23 @@ The main changes are:
 }
 
 /* Adjust tab panels to make room for sidebar */
-browser[type="content"][primary="true"] {
+#browser > #tabbrowser-tabbox
+  > #tabbrowser-tabpanels
+  > #panel-1-1
+  > .browserContainer
+  > .browserStack
+  > browser[type="content"][primary="true"] {
     margin-left: var(--sidebar-width) !important;
+    position: relative !important;
 }
 
 /* Adjust status panel to make room for sidebar */
-browser[type="content"][primary="true"] + #statuspanel {
+#main-window > #browser > #tabbrowser-tabbox
+  > #tabbrowser-tabpanels
+  > .browserSidebarContainer.deck-selected
+  > .browserContainer
+  > .browserStack
+  > #statuspanel {
     margin-left: var(--sidebar-width) !important;
 }
 
