@@ -1,0 +1,92 @@
+/* 
+Most of this code is adapted from FirefoxSidebar Project (https://codeberg.org/macleod/FirefoxSidebar) sidebar.css to work with Floorp.
+
+The main changes are:
+- Putting margin adjustments for tab panels and status panel to prevent content from being hidden behind the sidebar.
+- Disabling bottom padding on the sidebar.
+- Adjusted the sidebar width for my preference.
+- Remove unnecessary parts for Floorp.
+*/
+
+#main-window {
+  --sidebar-width: 40px;
+}
+
+/* Fullscreen fix: Change the width to 1px */
+#main-window[inFullscreen="true"] { 
+  --sidebar-width: 1px; 
+}
+
+/* Hide default vertical tabs */
+#vertical-tabs {
+  display: none !important;
+}
+
+/* Remove the border radius on the webview */
+#browser {
+  border-radius: 0px !important;
+}
+
+/* Remove the sidebar header */
+#sidebar-panel-header {
+  display: none;
+}
+
+/* Adjust tab panels to make room for sidebar */
+browser[type="content"][primary="true"] {
+    margin-left: var(--sidebar-width) !important;
+}
+
+/* Adjust status panel to make room for sidebar */
+browser[type="content"][primary="true"] + #statuspanel {
+    margin-left: var(--sidebar-width) !important;
+}
+
+/* Remove sidebar box border and shadow */
+#sidebar-box {
+    border: none !important;
+    border-inline: 0 !important;
+    border-inline-start: 0 !important;
+    border-inline-end: 0 !important;
+    box-shadow: none !important;
+}
+
+/* Sidebar switcher toolbar */
+#sidebar-main {
+  order: 1 !important;
+  z-index: 999;
+  border: medium;
+  width: var(--sidebar-width) !important;
+  max-width: var(--sidebar-width) !important;
+  flex-direction: column-reverse;
+  position: absolute;
+  bottom: 0px;
+  overflow: hidden !important;
+  height: 50px;
+}
+
+#sidebar-main:hover {
+  z-index: 99;
+  height: fit-content;
+  background: var(--arrowpanel-background);
+}
+
+#sidebar-splitter {
+  display: none;
+}
+
+/* Sidebar extension */
+#sidebar-box {
+  width: var(--sidebar-width) !important;
+  min-width: var(--sidebar-width) !important;
+  z-index: 98 !important;
+  box-shadow: none !important;
+  position: absolute !important;
+  height: 100% !important;
+  padding: 0px !important;
+  border-right: 1px solid var(--chrome-content-separator-color);
+}
+
+#sidebar-box:hover {
+  width: 260px !important;
+}
